@@ -59,19 +59,6 @@ services:
     desploy:
       repliscas: 2
 
-  api5:
-    image: instancia5:step5-python
-    build: ./api5
-    ports:
-      - "5004:5000"
-    environment:
-      - REDIS_URL=redis://redis:6379
-    depends_on:
-      - redis
-    volumes:
-      - ./movie25.csv:/shared_data/movie25.csv
-    desploy:
-      repliscas: 2
 
   redis:
     image: redis
