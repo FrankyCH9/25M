@@ -13,7 +13,7 @@ services:
     volumes:
       - ./movie25.csv:/shared_data/movie25.csv
     desploy:
-      repliscas: 2
+      replicas: 2
 
 
   api2:
@@ -28,7 +28,7 @@ services:
     volumes:
       - ./movie25.csv:/shared_data/movie25.csv
     desploy:
-      repliscas: 2
+      replicas: 2
 
 
   api3:
@@ -43,7 +43,7 @@ services:
     volumes:
       - ./movie25.csv:/shared_data/movie25.csv
     desploy:
-      repliscas: 2
+      replicas: 2
 
   api4:
     image: instancia4:step5-python
@@ -57,8 +57,21 @@ services:
     volumes:
       - ./movie25.csv:/shared_data/movie25.csv
     desploy:
-      repliscas: 2
+      replicas: 2
 
+  api5:
+    image: instancia5:step5-python
+    build: ./api5
+    ports:
+      - "5004:5000"
+    environment:
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - redis
+    volumes:
+      - ./movie25.csv:/shared_data/movie25.csv
+    desploy:
+      replicas: 2
 
   redis:
     image: redis
